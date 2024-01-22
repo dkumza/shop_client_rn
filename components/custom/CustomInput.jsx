@@ -11,13 +11,31 @@ const shadow = {
 
   elevation: 1,
 };
-const CustomInput = ({ text, protect }) => {
+
+// <TextInput
+//   onChangeText={formik.handleChange('email')}
+//   onBlur={formik.handleBlur('email')}
+//   value={formik.values.email}
+//   placeholder="Email"
+// />;
+// {
+//   formik.touched.email && formik.errors.email ? <Text>{formik.errors.email}</Text> : null;
+// }
+
+const CustomInput = ({ text, protect, formik, fieldName }) => {
   return (
     <View className="justify-end gap-1 mb-2">
-      <Text className="px-1 text-violet-800">{text}</Text>
+      {formik.touched[fieldName] && formik.errors[fieldName] ? (
+        <Text className="px-1 text-rose-500">{formik.errors[fieldName]}</Text>
+      ) : (
+        <Text className="px-1  text-violet-800">{text}</Text>
+      )}
+
       <TextInput
+        onChangeText={formik.handleChange(fieldName)}
+        onBlur={formik.handleBlur(fieldName)}
+        value={formik.values[fieldName]}
         className={`border border-violet-400 bg-violet-50 rounded-lg py-2 px-4`}
-        style={shadow}
         keyboardType="default"
         secureTextEntry={protect}
         selectionColor="#4c1d95"

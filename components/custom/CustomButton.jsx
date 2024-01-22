@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 const shadow = {
   shadowColor: '#000',
@@ -11,10 +11,17 @@ const shadow = {
 
   elevation: 2,
 };
-export default CustomButton = ({ text }) => {
+
+const CustomButton = ({ title, onPress }) => {
   return (
-    <View className="bg-violet-700 rounded-lg py-2 px-4 my-4" style={shadow}>
-      <Text className="text-center text-white text-lg">{text}</Text>
-    </View>
+    <TouchableOpacity
+      onPress={onPress}
+      className="bg-violet-700 rounded-lg py-2 px-4 my-4"
+      style={shadow}
+    >
+      <Text className="text-center text-white text-lg">{title}</Text>
+    </TouchableOpacity>
   );
 };
+
+export default CustomButton;
