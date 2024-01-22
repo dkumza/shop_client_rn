@@ -1,12 +1,34 @@
 import { Text, View } from 'react-native';
-import CustomInput from '../custom/CustomInput';
-import CustomButton from '../custom/CustomButton';
-import { useAuthContext } from '../../context/AuthContext';
+import CustomInput from '../../custom/CustomInput';
+import CustomButton from '../../custom/CustomButton';
+import { useAuthContext } from '../../../context/AuthContext';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
+
+const LOGIN_URL = 'http://10.0.2.2:3000/api/auth/login';
 
 export default function Login() {
   const { login } = useAuthContext();
+
+  const axiosLogin = (loginInfo) => {
+    console.log('loginInfo ', loginInfo);
+    axios
+      .post(LOGIN_URL, loginInfo)
+      .then((res) => {
+        const { token, username } = res.data;
+        if (token && username) {
+          // console.log('token && username: ', token, username);
+          login(token, username);
+        }
+      })
+      .catch((error) => {
+        // console.log('error: ', error);
+        // addMsg('bg-red-200', `${error.response.data.error}`);
+        const errorFromAPI = error.response.data;
+        console.log('errorFromAPI: ', errorFromAPI);
+      });
+  };
 
   return (
     <View className="flex-1 justify-end">
@@ -26,7 +48,7 @@ export default function Login() {
             .required('Password is required field'),
         })}
         onSubmit={(values) => {
-          console.log('values ===', values);
+          axiosLogin(values);
         }}
       >
         {(formikProps) => (

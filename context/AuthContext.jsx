@@ -12,23 +12,35 @@ const AuthCtx = createContext({
 AuthCtx.displayName = 'AuthCtx';
 
 export const AuthCtxProvider = ({ children }) => {
-  const tokenFromLS = AsyncStorage.getItem('session_token');
-  const usernameFromLS = AsyncStorage.getItem('session_username');
-  const [sessionToken, setSessionToken] = useState(tokenFromLS || null);
-  const [username, setUsername] = useState(usernameFromLS || '');
+  const [sessionToken, setSessionToken] = useState('');
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const fetchSessionData = async () => {
+      const tokenFromLS = await AsyncStorage.getItem('session_token');
+      const usernameFromLS = await AsyncStorage.getItem('session_username');
+      setSessionToken(tokenFromLS || '');
+      setUsername(usernameFromLS || '');
+    };
+    fetchSessionData();
+  }, []);
 
   const isUserLogged = !!sessionToken;
 
   const login = (token, username) => {
+    console.log('username: ', username);
+    console.log('token: ', token);
     setSessionToken(token);
-    setUsername(username);
+    setUser(username);
+
     AsyncStorage.setItem('session_token', token);
     AsyncStorage.setItem('session_username', username);
   };
   function logout() {
     console.log('logout');
     setSessionToken(null);
-    setUsername('');
+    setUser('');
+
     AsyncStorage.removeItem('session_token');
     AsyncStorage.removeItem('session_username');
   }
