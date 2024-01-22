@@ -25,13 +25,20 @@ export const AuthCtxProvider = ({ children }) => {
     AsyncStorage.setItem('session_token', token);
     AsyncStorage.setItem('session_username', username);
   };
+  function logout() {
+    console.log('logout');
+    setSessionToken(null);
+    setUsername('');
+    AsyncStorage.removeItem('session_token');
+    AsyncStorage.removeItem('session_username');
+  }
 
   const authCtx = {
     token: sessionToken,
     username,
     isUserLogged,
-    // login,
-    // logout,
+    login,
+    logout,
   };
 
   return <AuthCtx.Provider value={authCtx}>{children}</AuthCtx.Provider>;
