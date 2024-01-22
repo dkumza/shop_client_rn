@@ -19,7 +19,7 @@ export const AuthCtxProvider = ({ children }) => {
 
   const isUserLogged = !!sessionToken;
 
-  const login = (token, name) => {
+  const login = (token, username) => {
     setSessionToken(token);
     setUsername(username);
     AsyncStorage.setItem('session_token', token);
@@ -44,6 +44,6 @@ export const AuthCtxProvider = ({ children }) => {
   return <AuthCtx.Provider value={authCtx}>{children}</AuthCtx.Provider>;
 };
 
-export function useAuthCtx() {
+export function useAuthContext() {
   return useContext(AuthCtx);
 }
