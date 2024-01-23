@@ -36,7 +36,7 @@ export default function Login() {
         <Text className="text-center text-5xl justify-end text-violet-700">Login</Text>
       </View>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: 'admin@admin.qq', password: '123456' }}
         validationSchema={Yup.object({
           email: Yup.string()
             .email('Email must be valid email')

@@ -31,7 +31,7 @@ export const AuthCtxProvider = ({ children }) => {
     console.log('username: ', username);
     console.log('token: ', token);
     setSessionToken(token);
-    setUser(username);
+    setUsername(username);
 
     AsyncStorage.setItem('session_token', token);
     AsyncStorage.setItem('session_username', username);

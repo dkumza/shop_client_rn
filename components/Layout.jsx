@@ -10,7 +10,7 @@ export const Layout = () => {
     <View className="flex-1 py-8">
       {/* <ActivityIndicator size={'large'} color="#7c3aed" /> */}
       {!isUserLogged && <Login />}
-      {isUserLogged && <ProductsPage />}
+      {isUserLogged && username && <ProductsPage />}
     </View>
   );
 };
