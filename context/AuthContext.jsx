@@ -39,7 +39,7 @@ export const AuthCtxProvider = ({ children }) => {
   function logout() {
     console.log('logout');
     setSessionToken(null);
-    setUser('');
+    setUsername('');
 
     AsyncStorage.removeItem('session_token');
     AsyncStorage.removeItem('session_username');
