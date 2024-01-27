@@ -8,7 +8,7 @@ export default function App() {
   return (
     <AuthCtxProvider>
       <ProductContextProvider>
-        <View className="flex-1 bg-violet-50">
+        <View className="flex-1 bg-violet-50 w-full">
           <Layout />
           <StatusBar style="auto" />
         </View>
