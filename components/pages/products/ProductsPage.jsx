@@ -6,18 +6,17 @@ import { useProductContext } from '../../../context/ProductContext';
 const ProductsPage = () => {
   const { products } = useProductContext();
   return (
-    <View className="flex-1">
+    <View className="flex-1 ">
       <Head />
-      <View className="flex-1">
+      <View className="flex-shrink">
         <FlatList
-          className="px-4 border-2 border-red-500 flex-1"
           data={products}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <SingleProduct prod={item} />}
           contentContainerStyle={styles.prodWrapper}
+          // numColumns={'2'}
         />
       </View>
-      {/* <SingleProduct /> */}
     </View>
   );
 };
@@ -25,11 +24,12 @@ export default ProductsPage;
 
 const styles = StyleSheet.create({
   prodWrapper: {
-    flex: 1,
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: 8,
-    width: '100%',
-    height: '100%',
-    // flexGrow: 1,
+    flexGrow: 0,
+    flexWrap: 'wrap',
+    // width: '100%',
   },
 });
