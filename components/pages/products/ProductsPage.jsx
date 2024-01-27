@@ -14,7 +14,6 @@ const ProductsPage = () => {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <SingleProduct prod={item} />}
           contentContainerStyle={styles.prodWrapper}
-          // numColumns={'2'}
         />
       </View>
     </View>
@@ -30,6 +29,5 @@ const styles = StyleSheet.create({
     gap: 8,
     flexGrow: 0,
     flexWrap: 'wrap',
-    // width: '100%',
   },
 });
