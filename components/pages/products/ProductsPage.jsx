@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import Head from '../topBar/Head';
+import Head from '../../topBar/Head';
 
 const ProductsPage = () => {
   return (
