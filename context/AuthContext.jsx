@@ -28,8 +28,6 @@ export const AuthCtxProvider = ({ children }) => {
   const isUserLogged = !!sessionToken;
 
   const login = (token, username) => {
-    console.log('username: ', username);
-    console.log('token: ', token);
     setSessionToken(token);
     setUsername(username);
 
