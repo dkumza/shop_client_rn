@@ -18,7 +18,7 @@ export default function SingleProduct({ prod }) {
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate('SingleProductPage', { product: prod })}>
-      <View className="border border-gray-300 min-h-fit bg-violet-100">
+      <View className="border border-gray-300 min-h-fit bg-zinc-200">
         <View className="">
           <Image className="h-[170px] w-[172px]" source={{ uri: `${urlPrefix}/${prod.img_url}` }} />
         </View>
