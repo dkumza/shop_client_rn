@@ -15,8 +15,12 @@ export default function App() {
       <ProductContextProvider>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Layout" component={Layout} />
-            <Stack.Screen name="SingleProductPage" component={SingleProductPage} />
+            <Stack.Screen name="Layout" component={Layout} options={{ headerShown: false }} />
+            <Stack.Screen
+              name="SingleProductPage"
+              component={SingleProductPage}
+              options={{ headerShown: false }}
+            />
           </Stack.Navigator>
           <StatusBar style="auto" />
         </NavigationContainer>

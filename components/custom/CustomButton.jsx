@@ -12,11 +12,11 @@ const shadow = {
   elevation: 2,
 };
 
-const CustomButton = ({ title, onPress }) => {
+const CustomButton = ({ title, onPress, css }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      className="bg-violet-700 rounded-lg py-2 px-4 my-4"
+      className={`${css ? css : 'bg-violet-700'} rounded-lg py-2 px-4 my-4`}
       style={shadow}
     >
       <Text className="text-center text-white text-lg">{title}</Text>

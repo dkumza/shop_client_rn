@@ -10,9 +10,7 @@ const ProductsPage = () => {
       <Head />
       <ScrollView>
         <View style={styles.prodWrapper}>
-          {products.map((prod) => (
-            <SingleProduct key={prod.id} prod={prod} />
-          ))}
+          {products && products.map((prod) => <SingleProduct key={prod.id} prod={prod} />)}
         </View>
       </ScrollView>
     </View>

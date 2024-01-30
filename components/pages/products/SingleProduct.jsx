@@ -13,18 +13,14 @@ import {
 const urlPrefix = 'http://10.0.2.2:3000';
 
 export default function SingleProduct({ prod }) {
+  // console.log(prod.id);
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity
-      onPress={() => navigation.navigate('SingleProductPage', { productId: prod.id })}
-    >
+    <TouchableOpacity onPress={() => navigation.navigate('SingleProductPage', { product: prod })}>
       <View className="border border-gray-300 min-h-fit bg-violet-100">
         <View className="">
-          <Image
-            className="h-[170px] w-[172px]"
-            source={{ uri: `${urlPrefix}/${prod.img_url}` }}
-          ></Image>
+          <Image className="h-[170px] w-[172px]" source={{ uri: `${urlPrefix}/${prod.img_url}` }} />
         </View>
         <View className="gap-1 px-4 py-2 pb-2 h-18">
           <Text className="font-semibold text-xl ">{prod.price} €</Text>
