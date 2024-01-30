@@ -31,7 +31,7 @@ export default function Login() {
   };
 
   return (
-    <View className="flex-1 justify-end px-4">
+    <View className="flex-1 justify-end px-4 pb-8">
       <View className=" mb-8">
         <Text className="text-center text-5xl justify-end text-violet-700">Login</Text>
       </View>

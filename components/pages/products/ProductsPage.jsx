@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, View } from 'react-native';
 import Head from '../../topBar/Head';
 import SingleProduct from './SingleProduct';
 import { useProductContext } from '../../../context/ProductContext';
@@ -8,14 +8,13 @@ const ProductsPage = () => {
   return (
     <View className="flex-1 ">
       <Head />
-      <View className="flex-shrink">
-        <FlatList
-          data={products}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <SingleProduct prod={item} />}
-          contentContainerStyle={styles.prodWrapper}
-        />
-      </View>
+      <ScrollView>
+        <View style={styles.prodWrapper}>
+          {products.map((prod) => (
+            <SingleProduct key={prod.id} prod={prod} />
+          ))}
+        </View>
+      </ScrollView>
     </View>
   );
 };
