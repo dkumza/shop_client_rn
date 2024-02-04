@@ -1,14 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Touchable,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 const urlPrefix = 'http://10.0.2.2:3000';
 

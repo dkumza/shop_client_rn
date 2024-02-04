@@ -1,7 +1,6 @@
 import { View, Text, Image, TextInput } from 'react-native';
 import Head from '../../topBar/Head';
 import CustomButton from '../../custom/CustomButton';
-import CustomInput from '../../custom/CustomInput';
 
 const urlPrefix = 'http://10.0.2.2:3000';
 
@@ -38,9 +37,8 @@ export default function SingleProductPage({ route }) {
             ></TextInput>
           </View>
         )}
-        <View>{product.stock !== 0 && <CustomButton title="Add to Cart" />}</View>
         <View>
-          {product.stock === 0 && <CustomButton title="Out of Stock" css="bg-gray-400" />}
+          <CustomButton title="Add to Cart" />
         </View>
         <View className="">
           <Text className="font-semibold text-violet-600 pb-2">Product description</Text>

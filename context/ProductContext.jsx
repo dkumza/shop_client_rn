@@ -17,14 +17,6 @@ export const ProductContextProvider = ({ children }) => {
       .get(PROD_URL)
       .then((res) => {
         if (res.data.length === 0) return;
-        // let formattedExpenses = res.data.map((expense) => {
-        //   let date = new Date(expense.date);
-        //   let formattedDate = `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${(
-        //     '0' + date.getDate()
-        //   ).slice(-2)}`;
-        //   return { ...expense, date: formattedDate };
-        // });
-        // setExpenses(formattedExpenses);
         console.log('res.data: ', res.data);
         setProducts(res.data);
       })
