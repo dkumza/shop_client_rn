@@ -8,37 +8,45 @@ export default function SingleProductPage({ route }) {
   const { product } = route.params;
   console.log(product);
 
+  const differenceInMilliseconds = new Date() - new Date(product.updated);
+  const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+
+  let updatedTime;
+  if (differenceInDays < 1) {
+    updatedTime = `1 hours ago`;
+  } else {
+    updatedTime = `${differenceInDays.toFixed(2)} days ago`;
+  }
+
   return (
     <View className="pt-8">
       <Head />
       <View className="px-4">
-        <View className="pb-2">
-          <Text className="">{product.title}</Text>
+        <View className="">
+          <Text className="text-xl pb-2">{product.title}</Text>
         </View>
         <View>
-          <Image
-            className="h-[240px] w-[100%]"
-            source={{ uri: `${urlPrefix}/${product.img_url}` }}
-          />
-        </View>
-        <View class="">
-          <Text className="text-3xl pt-4 ">{product.price} €</Text>
-        </View>
-        {product.stock !== 0 && (
-          <View className="flex-row justify-between items-center">
-            <View>
-              <Text>Choose quantity</Text>
+          {product.img_url ? (
+            <Image
+              className="h-[240px] w-[100%]"
+              source={{ uri: `${urlPrefix}/${product.img_url}` }}
+            />
+          ) : (
+            <View className="h-[240px] w-[100%] bg-zinc-200">
+              <Text className="text-center pt-12 text-2xl text-zinc-400">No Image</Text>
             </View>
-            <TextInput
-              keyboardType="numeric"
-              maxLength={1}
-              selectionColor="#4c1d95"
-              className="border border-gray-400 py-2 px-4 w-1/3 rounded"
-            ></TextInput>
+          )}
+          <View className="absolute bg-violet-300 py-1 px-2 right-0">
+            <Text>{updatedTime}</Text>
           </View>
-        )}
+        </View>
+        <View className="">
+          <View className="">
+            <Text className="text-3xl pt-4">{product.price} €</Text>
+          </View>
+        </View>
         <View>
-          <CustomButton title="Add to Cart" />
+          <CustomButton title="Contact Seller" />
         </View>
         <View className="">
           <Text className="font-semibold text-violet-600 pb-2">Product description</Text>
